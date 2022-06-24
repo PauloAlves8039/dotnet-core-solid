@@ -20,20 +20,20 @@ namespace GerenciamentoDeDescontro.Classes
             switch (statusContaCliente)
             {
                 case StatusContaCliente.NaoRegistrado:
-                    precoDepoisDoDesconto = preco;
+                    precoDepoisDoDesconto = new ClienteNaoRegistradoDesconto().AplicarDescontoStatusConta(preco);;
                     break;
                 case StatusContaCliente.ClienteComum:
-                    precoDepoisDoDesconto = (preco - (Constantes.DESCONTO_CLIENTE_COMUM * preco));
+                    precoDepoisDoDesconto = new ClienteComumDesconto().AplicarDescontoStatusConta(preco);
                     precoDepoisDoDesconto = 
                         _descontoFidelidade.AplicarDescontoFidelidade(precoDepoisDoDesconto, tempoDeContaEmAnos);
                     break;
                 case StatusContaCliente.ClienteEspecial:
-                    precoDepoisDoDesconto = (preco - (Constantes.DESCONTO_CLIENTE_ESPECIAL * preco));
+                    precoDepoisDoDesconto = new ClienteEspecialDesconto().AplicarDescontoStatusConta(preco);
                     precoDepoisDoDesconto = 
                         _descontoFidelidade.AplicarDescontoFidelidade(precoDepoisDoDesconto, tempoDeContaEmAnos);
                     break;
                 case StatusContaCliente.ClienteVIP:
-                    precoDepoisDoDesconto = (preco - (Constantes.DESCONTO_CLIENTE_VIP * preco));
+                    precoDepoisDoDesconto = new ClienteVipDesconto().AplicarDescontoStatusConta(preco);
                     precoDepoisDoDesconto = 
                         _descontoFidelidade.AplicarDescontoFidelidade(precoDepoisDoDesconto, tempoDeContaEmAnos);
                     break;
