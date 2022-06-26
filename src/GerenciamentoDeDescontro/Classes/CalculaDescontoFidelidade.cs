@@ -10,7 +10,7 @@ namespace GerenciamentoDeDescontro.Classes
             decimal descontoPorFidelidade = (tempoDeContaEmAnos > Constantes.DESCONTO_MAXIMO_POR_FIDELIDADE) ? 
                 (decimal)Constantes.DESCONTO_MAXIMO_POR_FIDELIDADE / 100 : (decimal)tempoDeContaEmAnos / 100;
 
-            return - (descontoPorFidelidade * preco);
+            return preco - (descontoPorFidelidade * preco);
         }
     }
 }
